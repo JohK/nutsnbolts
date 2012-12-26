@@ -8,13 +8,17 @@
 // all shapes are positives with their origin in the hole center
 
 
-use <norm_nb-base.scad>
+include <norm_nb-base.scad>;
+include <norm_nb_data-metric_cyl_head_bolts.scad>;
 
-hole_through(head=5);
+//hole_through(head=5);
 
-echo(get_data("M5x20"));
+echo(get_screw("M5x5"));
 
-function get_data(n) = data[search([n],data)[0]];
+echo(search(["M5x5"], data_screw));
+
+echo(data_screw);
+
 
 // though hole for screws
 // head: sink in the screw head (for allen head screws)
