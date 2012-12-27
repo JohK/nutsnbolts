@@ -15,8 +15,11 @@ _NB_F_OUTER_DIA       = 1;
 _NB_F_INNER_DIA       = 2;
 _NB_F_LEAD            = 3; 
 _NB_F_KEY             = 4;
-_NB_F_HEAD_HEIGHT     = 5;
-_NB_F_HEAD_DIA        = 6;
+_NB_F_KEY_DEPTH       = 5;
+_NB_F_HEAD_HEIGHT     = 6;
+_NB_F_HEAD_DIA        = 7;
+_NB_F_NUT_KEY         = 8;
+_NB_F_NUT_HEIGHT      = 9;
 
 
 // == FUNCTIONS ==
@@ -27,14 +30,14 @@ _NB_F_HEAD_DIA        = 6;
 function _get_screw(n) = data_screw[search([n], data_screw)[0]];
 function _get_screw_fam(n) = data_screw_fam[search([_get_screw(n)[_NB_S_FAMKEY]], data_screw_fam)[0]];
 
-function _get_familydata(n) = data_screw_fam[search([n], data_screw_fam)[0]];
+function _get_fam(n) = data_screw_fam[search([n], data_screw_fam)[0]];
 
 
 // _get_XXXXX("descriptor") functions
 // find a single property in the database
 
 function _get_desc(n)        = _get_screw(n)[_NB_S_DESC];
-function _get_fam(n)         = _get_screw(n)[_NB_S_FAMKEY];
+function _get_famkey(n)         = _get_screw(n)[_NB_S_FAMKEY];
 function _get_length(n)      = _get_screw(n)[_NB_S_LENGTH];
 function _get_nt_length(n)   = _get_screw(n)[_NB_S_NOTHREAD_LENGTH];
 
