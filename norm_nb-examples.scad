@@ -3,9 +3,15 @@
 include <norm_nb-cyl_head_bolt.scad>;
 //include <norm_nb-base.scad>;
 
-// holes
-//cube([60, 20, 10]);
+// example nut catches and holes
 
+difference() {
+	translate([-15, -15, 0]) cube([80, 30, 50]);
+	rotate([180,0,0]) nut_catch_normal("M5");
+	translate([0, 0, 50]) hole_through(name="M5", l=50+5, cl=0.1, h=10, hcl=0.4);
+	translate([55, 0, 7.5]) nut_catch_sidecut("M8", 100);
+	translate([55, 0, 50]) hole_through(name="M8", l=50+5, cl=0.1, h=10, hcl=0.4);
+}
 
 
 
@@ -28,7 +34,7 @@ translate([50,50,-30]) nut("M5");
 
 // example db lookups
 
-echo(_get_fam("M8"));
-echo(_get_screw("M5x8"));
-echo(_get_screw_fam("M5x8"));
+//echo(_get_fam("M8"));
+//echo(_get_screw("M5x8"));
+//echo(_get_screw_fam("M5x8"));
 
