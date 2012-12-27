@@ -1,20 +1,32 @@
+// Norm Nuts and Bolts - an OpenSCAD library
+// Copyright (C) 2012  Johannes Kneer
 
-// data file for metric bolts
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+// DATA FILE FOR METRIC BOLTS AND NUTS
+
 
 // Bolts with HEXAGON SOCKET HEAD CAP SCREWS
 // Schrauben mit Zylinderkopf mit Innensechskant
 
-// the modelled bolt is very similar to DIN 912 and
-// DIN EN ISO 4762 bolts
-
-// descriptor, thread, lead, 
-
-// data = [	["M5x8", 5, 8, 1, 4.2],
-//			["M5x20", 5, 20, 1, 4.2],
-//			["M5x25", 5, 25, 1, 4.2] ];
+// the modeled bolt is similar to DIN 912 and DIN EN ISO 4762 bolts
+// the modeled nut is similar DIN EN ISO 4032
 
 
-// screw family table
+
+// == screw family table ==
 // properties common for a whole screw family
 // also including head height and nut height
 
@@ -41,6 +53,9 @@ data_screw_fam = [
 ["M64",   64, "xx",    6,  46,   38,  64,  96,  95,   51]
 ];
 
+
+// == screw table ==
+// properties for individual screws
 
 data_screw = [
 // desc, family, length, noth_length 

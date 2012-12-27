@@ -1,4 +1,21 @@
+// Norm Nuts and Bolts - a OpenSCAD library
+// Copyright (C) 2012  Johannes Kneer
 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+// MAIN LIBRARY MODULES AND FUNCTIONS
 
 
 include <norm_nb-base.scad>;                       // database lookup functions
@@ -28,6 +45,8 @@ module hole_threaded(thread="no") {
 
 	if (thread=="modeled") echo("modeled thread is currently not supported");
 }
+
+
 
 // simple heaxagonal nut catch
 module nut_catch_normal(name="none") {

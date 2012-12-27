@@ -1,6 +1,23 @@
+// Norm Nuts and Bolts - a OpenSCAD library
+// Copyright (C) 2012  Johannes Kneer
 
-// base functions and modules for the norm-boltnnuts package
-// database access mainly
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+// DATABASE ACCESS FUNCTIONS AND CONSTANTS
+
+
 
 // == CONSTANTS == 
 
@@ -46,5 +63,7 @@ function _get_inner_dia(n)   = _get_screw_fam(n)[_NB_F_INNER_DIA];
 function _get_lead(n)        = _get_screw_fam(n)[_NB_F_LEAD];
 function _get_head_height(n) = _get_screw_fam(n)[_NB_F_HEAD_HEIGHT];
 function _get_head_dia(n)    = _get_screw_fam(n)[_NB_F_HEAD_DIA];
+function _get_nut_key(n)     = _get_screw_fam(n)[_NB_F_NUT_KEY];
+function _get_nut_height(n)  = _get_screw_fam(n)[_NB_F_NUT_HEIGHT];
 
 

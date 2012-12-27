@@ -1,9 +1,27 @@
-// norm bolt and nuts package
+// Norm Nuts and Bolts - a OpenSCAD library
+// Copyright (C) 2012  Johannes Kneer
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+// USAGE EXAMPLES
+
 
 include <norm_nb-cyl_head_bolt.scad>;
-//include <norm_nb-base.scad>;
 
-// example nut catches and holes
+
+// == example nut catches and holes ==
 
 difference() {
 	translate([-15, -15, 0]) cube([80, 30, 50]);
@@ -15,7 +33,7 @@ difference() {
 
 
 
-// example nuts and screws
+// == example nuts and screws ==
 
 $fn=60;
 translate([0,50, 0]) screw("M20x100", thread="modeled");
@@ -32,7 +50,7 @@ translate([50,50,-30]) nut("M5");
 
 
 
-// example db lookups
+// == example db lookups ==
 
 //echo(_get_fam("M8"));
 //echo(_get_screw("M5x8"));

@@ -1,0 +1,1 @@
+add clearance to all modules/functions
