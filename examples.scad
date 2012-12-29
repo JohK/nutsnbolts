@@ -18,7 +18,7 @@
 // USAGE EXAMPLES
 
 
-include <norm_nb-cyl_head_bolt.scad>;
+include <cyl_head_bolt.scad>;
 
 
 // == example nut catches and holes ==
