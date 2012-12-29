@@ -118,7 +118,7 @@ module nutcatch_sidecut(name="M3", l=50, clk=0, clh=0, clsl=0.1) {
 	nutkey = df[_NB_F_NUT_KEY];
 	nutheight = df[_NB_F_NUT_HEIGHT];
 	
-	cl = depth - _calc_HexInscToSubscRadius(nutkey/2);
+	cl = l - _calc_HexInscToSubscRadius(nutkey/2);
 	union() {
 		translate([l/2, 0, -(nutheight+clh)/2])
 			cube([l, nutkey+clk, nutheight+clh], center=true);
