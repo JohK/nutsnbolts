@@ -153,7 +153,7 @@ module screw(name="M5x20", thread="no") {
 	translate([0,0,-length/2]) cylinder(r = orad, h = length, center=true);
 	difference() {
 		translate([0,0,head_height/2]) cylinder(r=head_rad, h=head_height, center=true);
-		translate([0,0,head_height]) key_slot(key=key_width, depth=key_depth);
+		translate([0,0,head_height]) key_slot(k=key_width, l=key_depth);
 	}
 
 	if (thread=="modeled") echo("modeled thread is currently not supported");	
