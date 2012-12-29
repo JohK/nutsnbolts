@@ -25,9 +25,9 @@ include <norm_nb-cyl_head_bolt.scad>;
 
 difference() {
 	translate([-15, -15, 0]) cube([80, 30, 50]);
-	rotate([180,0,0]) nut_catch_normal("M5");
+	rotate([180,0,0]) nutcatch_parallel("M5", l=5);
 	translate([0, 0, 50]) hole_through(name="M5", l=50+5, cl=0.1, h=10, hcl=0.4);
-	translate([55, 0, 7.5]) nut_catch_sidecut("M8", 100);
+	translate([55, 0, 9]) nutcatch_sidecut("M8", l=100, clk=0.1, clh=0.1, clsl=0.1);
 	translate([55, 0, 50]) hole_through(name="M8", l=50+5, cl=0.1, h=10, hcl=0.4);
 }
 
