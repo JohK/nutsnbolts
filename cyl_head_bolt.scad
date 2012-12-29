@@ -17,7 +17,7 @@
 
 // MAIN LIBRARY MODULES AND FUNCTIONS
 
-include <data_access.scad>;                        // database lookup functions
+include <data_access.scad>;                // database lookup functions
 include <data-metric_cyl_head_bolts.scad>; // database 
 
 
@@ -66,7 +66,13 @@ module hole_through(name="M5", l=50, cld=0.2, h=0, hcld=1) {
 // (at least for typical screw sizes)
 
 module hole_threaded(name="M3", l=25, thread="no", cltr=0) {
+	df = _get_fam(name);
+	irad        = df[_NB_F_INNER_DIA]/2;
+	orad        = df[_NB_F_OUTER_DIA]/2;
 
+	translate([0,0,-l/2]) cylinder(h=l, r=orad+cltr/2);
+	// thread: no      -> inner dia
+	//         modeled -> thread
 
 	if (thread=="modeled") echo("modeled thread is currently not supported");
 }
