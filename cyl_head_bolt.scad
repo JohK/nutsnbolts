@@ -187,17 +187,24 @@ module nut(name="M3", thread="no") {
 	df = _get_fam(name);
 	nutkey = df[_NB_F_NUT_KEY];
 	nutheight = df[_NB_F_NUT_HEIGHT];
-	dia = df[_NB_F_OUTER_DIA];
+	orad = df[_NB_F_OUTER_DIA]/2;
+	lead = df[_NB_F_LEAD];
+	irad = orad-lead;
 
 	e = _calc_HexInscToSubscRadius(nutkey/2);
 	translate([0,0,-nutheight/2]) {
 		difference() {
 			hexaprism(ri=nutkey/2, h=nutheight);
-			cylinder(r=dia/2, h=nutheight+0.1, center=true);
+			cylinder(r=irad, h=nutheight+0.1, center=true);
+			if (thread=="modeled") {
+				translate([0,0,-nutheight/2]) thread(orad, nutheight, lead);
+				translate([0,0,-nutheight/2]) cylinder(r1=orad, r2=irad, h=lead, center=true);
+				translate([0,0,nutheight/2]) cylinder(r2=orad, r1=irad, h=lead, center=true);
+			}
 		}
 	}
 
-	if (thread=="modeled") echo("modeled thread is currently not supported");
+	//if (thread=="modeled") echo("modeled thread is currently not supported");
 }
 // -- end of nut module
 
