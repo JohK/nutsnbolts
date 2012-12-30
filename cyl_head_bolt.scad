@@ -17,9 +17,8 @@
 
 // MAIN LIBRARY MODULES AND FUNCTIONS
 
-include <data_access.scad>;                        // database lookup functions
+include <data-access.scad>;                // database lookup functions
 include <data-metric_cyl_head_bolts.scad>; // database 
-
 
 
 // -----------------------------
@@ -112,7 +111,7 @@ module nutcatch_sidecut(name="M3", l=50, clk=0, clh=0, clsl=0.1) {
 	nutkey = df[_NB_F_NUT_KEY];
 	nutheight = df[_NB_F_NUT_HEIGHT];
 	
-	cl = depth - _calc_HexInscToSubscRadius(nutkey/2);
+	cl = l - _calc_HexInscToSubscRadius(nutkey/2);
 	union() {
 		translate([l/2, 0, -(nutheight+clh)/2])
 			cube([l, nutkey+clk, nutheight+clh], center=true);
@@ -141,7 +140,9 @@ module screw(name="M5x20", thread="no") {
 	ds = _get_screw(name);
 	df = _get_screw_fam(name);
 	length      = ds[_NB_S_LENGTH];
-	//tlength     = length-d[_NB_S_NOTHREAD_LENGTH];
+	nlength		= ds[_NB_S_NOTHREAD_LENGTH];
+	tlength     = length-nlength;
+	lead		    = df[_NB_F_LEAD];
 	orad        = df[_NB_F_OUTER_DIA]/2;
 	//irad        = df[_NB_F_INNER_DIA]/2;
 	head_height = df[_NB_F_HEAD_HEIGHT];
@@ -150,13 +151,23 @@ module screw(name="M5x20", thread="no") {
 	key_width = df[_NB_F_KEY];
 	key_depth = df[_NB_F_KEY_DEPTH];
 
-	translate([0,0,-length/2]) cylinder(r = orad, h = length, center=true);
+	if (thread=="modeled") {
+		if(nlength>0) {
+			translate([0,0,-nlength/2+lead/2]) cylinder(r = orad, h = nlength-lead, center=true);
+			translate([0,0,-nlength+lead/2]) cylinder(r2=orad, r1=orad-lead, h=lead, center=true);
+			translate([0,0,-nlength-tlength+lead/2]) thread(orad, tlength+lead, lead);
+		} else {
+			translate([0,0,-tlength]) thread(orad, tlength, lead);
+	  	}
+	} else {
+		translate([0,0,-length/2]) cylinder(r = orad, h = length, center=true);
+	}
 	difference() {
 		translate([0,0,head_height/2]) cylinder(r=head_rad, h=head_height, center=true);
 		translate([0,0,head_height]) key_slot(k=key_width, l=key_depth);
 	}
 
-	if (thread=="modeled") echo("modeled thread is currently not supported");	
+	//if (thread=="modeled") echo("modeled thread is currently not supported");	
 }
 // -- end of screw module
 
@@ -217,6 +228,53 @@ module key_slot(name="none", k=5, l=2, clk=0, cll=0) {
 	translate([0,0,-(l+cll)/2]) hexaprism(ri=(k+clk)/2, h=(l+cll));
 }
 // -- end of key_slot module
+
+
+
+
+module thread(orad, tl, p) {
+r = [orad-0/18*p, orad-1/18*p, orad-2/18*p, orad-3/18*p, orad-4/18*p, orad-5/18*p,
+     orad-6/18*p, orad-7/18*p, orad-8/18*p, orad-9/18*p, orad-10/18*p, orad-11/18*p,
+     orad-12/18*p, orad-13/18*p, orad-14/18*p, orad-15/18*p, orad-16/18*p, orad-17/18*p,
+     orad-p];
+
+translate([0,0,tl/2])
+//difference() {
+linear_extrude(height = tl, convexity = 10, twist = -360.0*tl/p, center = true)
+	polygon([[ r[ 0]*cos(  0), r[ 0]*sin(  0)], [r[ 1]*cos( 10), r[ 1]*sin( 10)],
+		     [ r[ 2]*cos( 20), r[ 2]*sin( 20)], [r[ 3]*cos( 30), r[ 3]*sin( 30)],
+		     [ r[ 4]*cos( 40), r[ 4]*sin( 40)], [r[ 5]*cos( 50), r[ 5]*sin( 50)],
+	     	 [ r[ 6]*cos( 60), r[ 6]*sin( 60)], [r[ 7]*cos( 70), r[ 7]*sin( 70)],
+		     [ r[ 8]*cos( 80), r[ 8]*sin( 80)], [r[ 9]*cos( 90), r[ 9]*sin( 90)],
+		     [ r[10]*cos(100), r[10]*sin(100)], [r[11]*cos(110), r[11]*sin(110)],
+		     [ r[12]*cos(120), r[12]*sin(120)], [r[13]*cos(130), r[13]*sin(130)],
+		     [ r[14]*cos(140), r[14]*sin(140)], [r[15]*cos(150), r[15]*sin(150)],
+		     [ r[16]*cos(160), r[16]*sin(160)], [r[17]*cos(170), r[17]*sin(170)],
+		     [ r[18]*cos(180), r[18]*sin(180)], [r[17]*cos(190), r[17]*sin(190)],
+			 [ r[16]*cos(200), r[16]*sin(200)], [r[15]*cos(210), r[15]*sin(210)],
+			 [ r[14]*cos(220), r[14]*sin(220)], [r[13]*cos(230), r[13]*sin(230)],
+			 [ r[12]*cos(240), r[12]*sin(240)], [r[11]*cos(250), r[11]*sin(250)],
+			 [ r[10]*cos(260), r[10]*sin(260)], [r[ 9]*cos(270), r[ 9]*sin(270)],
+			 [ r[ 8]*cos(280), r[ 8]*sin(280)], [r[ 7]*cos(290), r[ 7]*sin(290)],
+			 [ r[ 6]*cos(300), r[ 6]*sin(300)], [r[ 5]*cos(310), r[ 5]*sin(310)],
+			 [ r[ 4]*cos(320), r[ 4]*sin(320)], [r[ 3]*cos(330), r[ 3]*sin(330)],
+			 [ r[ 2]*cos(340), r[ 2]*sin(340)], [r[ 1]*cos(350), r[ 1]*sin(350)]
+             ]);
+/*
+
+	translate([0,0,-tl/2+p/2])
+		difference(center=true) {
+			cylinder(h=p,r=d, center=true);
+			cylinder(h=p,r1=orad-p,r2=orad, center=true);
+		}
+	translate([0,0,tl/2-p])
+		difference(center=true) {
+			cylinder(h=2*p,r=d, center=true);
+			cylinder(h=2*p,r1=orad,r2=orad-p, center=true);
+		}
+}
+*/
+}
 
 
 

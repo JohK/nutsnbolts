@@ -19,6 +19,7 @@
 
 
 include <cyl_head_bolt.scad>;
+include <materials.scad>;
 
 
 // == example nut catches and holes ==
@@ -36,7 +37,7 @@ difference() {
 // == example nuts and screws ==
 
 $fn=60;
-translate([0,50, 0]) screw("M20x100", thread="modeled");
+stainless() translate([0,50, 0]) screw("M20x100", thread="modeled");
 translate([0,50,-120]) nut("M20");
 
 translate([30,50,0]) screw("M12x60");
