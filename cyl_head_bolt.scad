@@ -26,6 +26,7 @@ include <data-metric_cyl_head_bolts.scad>; // database
 // -----------------------------
 
 module hole_through(
+
 	name = "M3",  // name of screw family (i.e. M4, M5, etc)
 	l    = 50.0,  // length of main bolt
 	cld  =  0.2,  // dia clearance for the bolt
@@ -53,6 +54,7 @@ module hole_through(
 // -----------------------------
 
 module hole_threaded(
+
 	name   = "M3",  // name of screw family (i.e. M3, M4, M42, ...)
 	l      = 25.0,  // length/depth of hole 
 	thread = "no",  // option wheter or not to model the thread
@@ -61,9 +63,18 @@ module hole_threaded(
         cltr   =  0.0)  // dia clearance to add for thread=no
 { // -----------------------------------------------
 
-	echo("not implemented");
+	df = _get_fam(name);
+	orad        = df[_NB_F_OUTER_DIA]/2;
+	lead	    = df[_NB_F_LEAD];
+	
+	irad = orad-lead;
 
-	if (thread=="modeled") echo("modeled thread is currently not supported");
+	translate([0,0,-l/2])
+	if (thread=="modeled") {
+		thread(orad, l, lead);
+	} else {
+		cylinder(r=irad,h=l,center=true);
+	}
 }
 // -- end of hole_threaded module
 // -----------------------------
@@ -75,6 +86,7 @@ module hole_threaded(
 // ------------------------------------
 
 module nutcatch_parallel(
+
 	name   = "M3",  // name of screw family (i.e. M3, M4, ...)
 	l      =  5.0,  // length/depth of hole
 	clk    =  0.0)  // clearance aditional to nominal key width
@@ -95,6 +107,7 @@ module nutcatch_parallel(
 // ----------------------------------------
 
 module nutcatch_sidecut(
+
 	name   = "M3",  // name of screw family (i.e. M3, M4, ...) 
 	l      = 50.0,  // length of slot
 	clk    =  0.0,  // height clearance
@@ -126,6 +139,7 @@ module nutcatch_sidecut(
 // Beware that for a diameter only certain screw lengths do actually exist!
 
 module screw(
+
 	name   = "M5x20",  // name of screw (i.e. M3x12, M4x25, ...)
 	thread =    "no")  // option wheter or not to model the thread
                            //   -> no:      bolt has has outer thread diameter (default)
@@ -175,6 +189,7 @@ module screw(
 // -----------------------------
 
 module nut(
+
 	name =    "M3",  // name of screw (i.e. M3x12, M4x25, ...)
 	thread =  "no")  // option wheter or not to model the thread
                          //   -> no:      nut has has inner thread diameter (default)
@@ -305,6 +320,7 @@ module hexagon(
 // ------------------------------------------
 
 module hexaprism(
+
 	ri =  1.0,  // radius of inscribed circle
 	h  =  1.0)  // height of hexaprism
 { // -----------------------------------------------
