@@ -8,7 +8,7 @@ A OpenSCAD library that allows for simple creation of nuts and bolts and respect
 The Library is based iso metric standard screws with hexagon socket head cap and respective nuts (see DIN 912 or DIN EN ISO 4762 for reference). The library allows for easy access to parts and holes of true measures like so: `screw("M5x10")`. For holes and catches all measures can be adjusted by setting additional clearances.
 The origin for all parts created in this lib lies on the axis of the hole or screw. For screws on the underside of the head, for holes at top and for catches at the bottom.
 
-And yes this lib can model *threads* on the screws. Beware that this is low and may create improper stl files. The default is not to create a thread and instead have the outer diameter for bolts or the inner diameter for threaded holes and nuts.
+And yes this lib can model *threads* on the screws. Beware that this is slow and may create improper stl files. The default is not to create a thread and instead have the outer diameter for bolts or the inner diameter for threaded holes and nuts.
 
 
 Usage Example
