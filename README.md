@@ -3,6 +3,8 @@ nutsnbolts
 
 A OpenSCAD library that allows for simple creation of nuts and bolts and respective nut catches and screw holes.
 
+![Screenshot of examples.scad output](http://i.imgur.com/f0snG.png)
+
 The Library is based iso metric standard screws with hexagon socket head cap and respective nuts (see DIN 912 or DIN EN ISO 4762 for reference). The library allows for easy access to parts and holes of true measures like so: `screw("M5x10")`. For holes and catches all measures can be adjusted by setting additional clearances.
 The origin for all parts created in this lib lies on the axis of the hole or screw. For screws on the underside of the head, for holes at top and for catches at the bottom.
 
@@ -20,26 +22,27 @@ The package includes threaded and through holes to screw the bolts in or push th
 Also nutcatches cut sideways into a body and a catch just parallel to the through-hole axis are available.
 
 ### Screws and Nuts
-`include <cyl_head_bolt.scad>;
+	include <cyl_head_bolt.scad>;
 
-screw("M20x100", thread="modeled"); // screw M20x100 with thread
-nut("M20", thread="modeled");       // corresponding nut with thread
+	screw("M20x100", thread="modeled"); // screw M20x100 with thread
+	nut("M20", thread="modeled");       // corresponding nut with thread
 			    
-screw("M3x12");                     // screw M3x12`
+	screw("M3x12");                     // screw M3x12
 
-
+![Screenshot 1 of screw("M20x100", thread="modeled");](http://i.imgur.com/tIFTW.png)
+![Screenshot 2 of screw("M20x100", thread="modeled");](http://i.imgur.com/AfHBo.png)
 
 
 
 ### Materials and Colors
 
 
-`include <materials.scad>;  // this allows you to write stuff like this:
-stainless(no="1.4301") nut("M3");`
+	include <materials.scad>;  // this allows you to write stuff like this:
+	stainless(no="1.4301") nut("M3");
 
-// which colors the parts in the corresponding color and documents the
-// intended material. The material number isn't used for anything and can be
-// skipped. Sensual defaults are set for stainless/steel/iron.
+	// which colors the parts in the corresponding color and documents the
+	// intended material. The material number isn't used for anything and can be
+	// skipped. Sensual defaults are set for stainless/steel/iron.
 
 
 
