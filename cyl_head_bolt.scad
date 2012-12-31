@@ -110,8 +110,8 @@ module nutcatch_sidecut(
 
 	name   = "M3",  // name of screw family (i.e. M3, M4, ...) 
 	l      = 50.0,  // length of slot
-	clk    =  0.0,  // height clearance
-	clh    =  0.0,  // key width clearance
+	clk    =  0.0,  // key width clearance
+	clh    =  0.0,  // height clearance
 	clsl   =  0.1)  // slot width clearance
 { // -----------------------------------------------
 
