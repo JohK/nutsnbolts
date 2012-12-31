@@ -60,7 +60,7 @@ module hole_threaded(
 	thread = "no",  // option wheter or not to model the thread
 			//   -> no:      hole has inner thread diameter (default)
                         //   -> modeled: actual thread is in the model
-        cltr   =  0.0)  // dia clearance to add for thread=no
+        cltd   =  0.0)  // dia clearance to add for thread=no
 { // -----------------------------------------------
 
 	df = _get_fam(name);
@@ -73,7 +73,7 @@ module hole_threaded(
 	if (thread=="modeled") {
 		thread(orad, l, lead);
 	} else {
-		cylinder(r=irad,h=l,center=true);
+		cylinder(r=irad+cltd/2,h=l,center=true);
 	}
 }
 // -- end of hole_threaded module
@@ -95,7 +95,7 @@ module nutcatch_parallel(
 	df     = _get_fam(name);
 	nutkey = df[_NB_F_NUT_KEY];
 
-	translate([0,0,-l/2]) hexaprism(ri=nutkey/2, h=l);
+	translate([0,0,-l/2]) hexaprism(ri=nutkey/2+clk/2, h=l);
 }
 // -- end of nutcatch_parallel module
 // -----------------------------
