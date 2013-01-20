@@ -20,6 +20,15 @@ For more usage examples have a look into *examples.scad*.
 ### Holes and Nutcatches
 The package includes threaded and through holes to screw the bolts in or push them through.
 Also nutcatches cut sideways into a body and a catch just parallel to the through-hole axis are available.
+	
+	difference() {
+		translate([-15, -15, 0]) cube([80, 30, 50]);
+		rotate([180,0,0]) nutcatch_parallel("M5", l=5);
+		translate([0, 0, 50]) hole_through(name="M5", l=50+5, cl=0.1, h=10, hcl=0.4);
+		translate([55, 0, 9]) nutcatch_sidecut("M8", l=100, clk=0.1, clh=0.1, clsl=0.1);
+	}
+
+![Screenshot of the resulting model](http://i.imgur.com/8pFyggB.png)
 
 ### Screws and Nuts
 	include <cyl_head_bolt.scad>;
