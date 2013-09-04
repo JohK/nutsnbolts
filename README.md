@@ -51,7 +51,7 @@ Also nutcatches cut sideways into a body and a catch just parallel to the throug
 
 	// which colors the parts in the corresponding color and documents the
 	// intended material. The material number isn't used for anything and can be
-	// skipped. Sensual defaults are set for stainless/steel/iron.
+	// skipped. Sensible defaults are set for stainless/steel/iron.
 
 
 
