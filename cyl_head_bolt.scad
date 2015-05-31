@@ -69,11 +69,11 @@ module hole_threaded(
 	
 	irad = orad-lead;
 
-	translate([0,0,-l/2])
+	
 	if (thread=="modeled") {
-		thread(orad, l, lead);
+		translate([0,0,-l]) thread(orad, l, lead);
 	} else {
-		cylinder(r=irad+cltd/2,h=l,center=true);
+		translate([0,0,-l/2]) cylinder(r=irad+cltd/2,h=l,center=true);
 	}
 }
 // -- end of hole_threaded module
