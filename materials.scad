@@ -23,15 +23,15 @@
 
 
 module stainless(no="1.4301") {
-	color([0.45, 0.43, 0.5]) for(i=[1:$children]) child(i-1);
+	color([0.45, 0.43, 0.5]) children([0:$children-1]);
 }
 
 module steel(no) {
-	color([0.65, 0.67, 0.72]) for(i=[1:$children]) child(i-1);
+	color([0.65, 0.67, 0.72]) children([0:$children-1]);
 }
 
 module iron(no="ST37") {
-	color([0.36, 0.33, 0.33]) for(i=[1:$children]) child(i-1);
+	color([0.36, 0.33, 0.33]) children([0:$children-1]);
 }
 
 // additional colors
