@@ -122,7 +122,7 @@ module nutcatch_sidecut(
 	cl = l - _calc_HexInscToSubscRadius(nutkey/2);
 	union() {
 		translate([l/2, 0, -(nutheight+clh)/2])
-			cube([l, nutkey+clk, nutheight+clh], center=true);
+			cube([l, nutkey+clsl, nutheight+clh], center=true);
 		translate([0,0, -(nutheight+clh)/2]) hexaprism(ri=(nutkey+clk)/2, h=nutheight+clh);
 	}
 }
