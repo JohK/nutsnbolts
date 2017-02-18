@@ -18,7 +18,7 @@
 // MAIN LIBRARY MODULES AND FUNCTIONS
 
 include <data-access.scad>;                // database lookup functions
-include <data-metric_cyl_head_bolts.scad>; // database 
+include <data-metric_cyl_head_bolts.scad>; // database
 
 
 // =============================
@@ -50,13 +50,35 @@ module hole_through(
 
 
 // =============================
+// -- through hole for screws --
+// -----------------------------
+
+module hole_pitch(
+
+	name = "M3",  // name of screw family (i.e. M3, M4, M42, ...)
+	l    = 50.0,  // length of main bolt
+	type = "fine" // type of the pitch (fine, medium, coarse)
+	{ // -----------------------------------------------
+		df = _get_fam(name);
+		if(type == "fine")cylinder(d=df[_NB_F_PITCH_FINE],h=l,center=true);
+		else if(type == "medium")cylinder(d=df[_NB_F_PITCH_MEDIUM],h=l,center=true);
+		else if(type == "coarse")cylinder(d=df[_NB_F_PITCH_COARSE],h=l,center=true);
+		else echo(str("<b>ERROR</b> ",type, "is not a valid type for the pitch, those are: fine, medium, coarse!"));
+	}
+)
+// -- end of hole_pitch module
+// -----------------------------
+
+
+
+// =============================
 // -- threaded hole           --
 // -----------------------------
 
 module hole_threaded(
 
 	name   = "M3",  // name of screw family (i.e. M3, M4, M42, ...)
-	l      = 25.0,  // length/depth of hole 
+	l      = 25.0,  // length/depth of hole
 	thread = "no",  // option wheter or not to model the thread
 			//   -> no:      hole has inner thread diameter (default)
                         //   -> modeled: actual thread is in the model
@@ -66,10 +88,10 @@ module hole_threaded(
 	df = _get_fam(name);
 	orad        = df[_NB_F_OUTER_DIA]/2;
 	lead	    = df[_NB_F_LEAD];
-	
+
 	irad = orad-lead;
 
-	
+
 	if (thread=="modeled") {
 		translate([0,0,-l]) thread(orad, l, lead);
 	} else {
@@ -108,7 +130,7 @@ module nutcatch_parallel(
 
 module nutcatch_sidecut(
 
-	name   = "M3",  // name of screw family (i.e. M3, M4, ...) 
+	name   = "M3",  // name of screw family (i.e. M3, M4, ...)
 	l      = 50.0,  // length of slot
 	clk    =  0.0,  // key width clearance
 	clh    =  0.0,  // height clearance
@@ -118,7 +140,7 @@ module nutcatch_sidecut(
 	df = _get_fam(name);
 	nutkey = df[_NB_F_NUT_KEY];
 	nutheight = df[_NB_F_NUT_HEIGHT];
-	
+
 	cl = l - _calc_HexInscToSubscRadius(nutkey/2);
 	union() {
 		translate([l/2, 0, -(nutheight+clh)/2])
@@ -233,15 +255,15 @@ module key_slot(
 	name =   "none",  // name of screw family (i.e. M3, M4, ...)
 	k    =      5.0,  // key slot width, used if no name is given
 	l    =	    2.0,  // length/depth of key slot, used if no name is given
-	clk  =      0.0,  // clearance for key 
+	clk  =      0.0,  // clearance for key
 	cll  =      0.0)  // clearance for length/depth
 { // -----------------------------------------------
 
 	if (name!="none")
-		assign(df = _get_fam(name), 
+		assign(df = _get_fam(name),
 		       k = df[_NB_F_KEY],
 		       l = df[_NB_F_KEY_DEPTH]);
-	
+
 	translate([0,0,-(l+cll)/2]) hexaprism(ri=(k+clk)/2, h=(l+cll));
 }
 // -- end of key_slot module
@@ -250,13 +272,13 @@ module key_slot(
 
 
 // =============================
-// -- thread module           -- 
+// -- thread module           --
 // -----------------------------
 
 module thread(
-// the thread is extruded with a twisted linear extrusion 
+// the thread is extruded with a twisted linear extrusion
 
-	orad,  // outer diameter of thread 
+	orad,  // outer diameter of thread
 	tl,    // thread length
 	p)     // lead of thread
 { // -----------------------------------------------
