@@ -19,24 +19,27 @@
 
 
 
-// == CONSTANTS == 
+// == CONSTANTS ==
 
 // screw table access keys
 _NB_S_DESC            = 0;
-_NB_S_FAMKEY			 = 1;
+_NB_S_FAMKEY			    = 1;
 _NB_S_LENGTH          = 2;
 _NB_S_NOTHREAD_LENGTH = 3;
 
-_NB_F_DESC			 = 0;
+_NB_F_DESC			      = 0;
 _NB_F_OUTER_DIA       = 1;
 _NB_F_INNER_DIA       = 2;
-_NB_F_LEAD            = 3; 
+_NB_F_LEAD            = 3;
 _NB_F_KEY             = 4;
 _NB_F_KEY_DEPTH       = 5;
 _NB_F_HEAD_HEIGHT     = 6;
 _NB_F_HEAD_DIA        = 7;
 _NB_F_NUT_KEY         = 8;
 _NB_F_NUT_HEIGHT      = 9;
+_NB_F_PITCH_FINE      = 10;
+_NB_F_PITCH_MEDIUM    = 11;
+_NB_F_PITCH_COARSE    = 12;
 
 
 // == FUNCTIONS ==
@@ -65,5 +68,6 @@ function _get_head_height(n) = _get_screw_fam(n)[_NB_F_HEAD_HEIGHT];
 function _get_head_dia(n)    = _get_screw_fam(n)[_NB_F_HEAD_DIA];
 function _get_nut_key(n)     = _get_screw_fam(n)[_NB_F_NUT_KEY];
 function _get_nut_height(n)  = _get_screw_fam(n)[_NB_F_NUT_HEIGHT];
-
-
+function _get_fine_pitch(n)  = _get_screw_fam(n)[_NB_F_PITCH_FINE];
+function _get_medium_pitch(n)  = _get_screw_fam(n)[_NB_F_PITCH_MEDIUM];
+function _get_coarse_pitch(n)  = _get_screw_fam(n)[_NB_F_PITCH_COARSE];
