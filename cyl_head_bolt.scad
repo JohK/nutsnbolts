@@ -50,22 +50,21 @@ module hole_through(
 
 
 // =============================
-// -- through hole for screws --
+// -- pitch hole for screws --
 // -----------------------------
 
 module hole_pitch(
 
 	name = "M3",  // name of screw family (i.e. M3, M4, M42, ...)
 	l    = 50.0,  // length of main bolt
-	type = "fine" // type of the pitch (fine, medium, coarse)
-	{ // -----------------------------------------------
-		df = _get_fam(name);
-		if(type == "fine")cylinder(d=df[_NB_F_PITCH_FINE],h=l,center=true);
-		else if(type == "medium")cylinder(d=df[_NB_F_PITCH_MEDIUM],h=l,center=true);
-		else if(type == "coarse")cylinder(d=df[_NB_F_PITCH_COARSE],h=l,center=true);
-		else echo(str("<b>ERROR</b> ",type, "is not a valid type for the pitch, those are: fine, medium, coarse!"));
-	}
-)
+	type = "fine") // type of the pitch (fine, medium, coarse)
+{ // -----------------------------------------------
+	df = _get_fam(name);
+	if(type == "fine")cylinder(d=df[_NB_F_PITCH_FINE],h=l,center=true);
+	else if(type == "medium")cylinder(d=df[_NB_F_PITCH_MEDIUM],h=l,center=true);
+	else if(type == "coarse")cylinder(d=df[_NB_F_PITCH_COARSE],h=l,center=true);
+	else echo(str("<b>ERROR</b> ",type, "is not a valid type for the pitch, those are: fine, medium, coarse!"));
+}
 // -- end of hole_pitch module
 // -----------------------------
 
