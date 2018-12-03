@@ -20,6 +20,10 @@
 include <data-access.scad>;                // database lookup functions
 include <data-metric_cyl_head_bolts.scad>; // database 
 
+/* Constants */
+
+e = 0.01; // epsilon for SCAD artifact removal
+2e= 0.02; // adds a tiny overlap to subtrahends
 
 // =============================
 // -- through hole for screws --
@@ -41,7 +45,7 @@ module hole_through(
 	union() {
 		translate([0, 0, -l/2-h]) cylinder(r=(orad+cld/2), h=l,  center=true);
 		if (h>0)
-			translate([0,0,-h/2]) cylinder(r=(head_rad+hcld/2),h=h, center=true);
+			translate([0,0,-h/2]) cylinder(r=(head_rad+hcld/2),h=h+e, center=true);
 	}
 }
 // -- end of hole_through module
@@ -175,7 +179,7 @@ module screw(
 
 	difference() {
 		translate([0,0,head_height/2]) cylinder(r=head_rad, h=head_height, center=true);
-		translate([0,0,head_height]) key_slot(k=key_width, l=key_depth);
+		translate([0,0,head_height+e]) key_slot(k=key_width, l=key_depth+e);
 	}
 
 }
