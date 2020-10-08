@@ -58,12 +58,10 @@ function _get_famkey(n)         = _get_screw(n)[_NB_S_FAMKEY];
 function _get_length(n)      = _get_screw(n)[_NB_S_LENGTH];
 function _get_nt_length(n)   = _get_screw(n)[_NB_S_NOTHREAD_LENGTH];
 
-function _get_outer_dia(n)   = _get_screw_fam(n)[_NB_F_OUTER_DIA];
-function _get_inner_dia(n)   = _get_screw_fam(n)[_NB_F_INNER_DIA];
-function _get_lead(n)        = _get_screw_fam(n)[_NB_F_LEAD];
-function _get_head_height(n) = _get_screw_fam(n)[_NB_F_HEAD_HEIGHT];
-function _get_head_dia(n)    = _get_screw_fam(n)[_NB_F_HEAD_DIA];
-function _get_nut_key(n)     = _get_screw_fam(n)[_NB_F_NUT_KEY];
-function _get_nut_height(n)  = _get_screw_fam(n)[_NB_F_NUT_HEIGHT];
-
-
+function _get_outer_dia(n)   = _get_fam(n)[_NB_F_OUTER_DIA];
+function _get_inner_dia(n)   = _get_fam(n)[_NB_F_INNER_DIA];
+function _get_lead(n)        = _get_fam(n)[_NB_F_LEAD];
+function _get_head_height(n) = _get_fam(n)[_NB_F_HEAD_HEIGHT];
+function _get_head_dia(n)    = _get_fam(n)[_NB_F_HEAD_DIA];
+function _get_nut_key(n)     = _get_fam(n)[_NB_F_NUT_KEY];
+function _get_nut_height(n)  = _get_fam(n)[_NB_F_NUT_HEIGHT];
