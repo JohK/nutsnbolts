@@ -92,12 +92,14 @@ module hole_threaded(
 module nutcatch_parallel(
 
 	name   = "M3",  // name of screw family (i.e. M3, M4, ...)
-	l      =  5.0,  // length/depth of hole
+	clh    =  0.0,  // nut height clearance
 	clk    =  0.0)  // clearance aditional to nominal key width
 { // -----------------------------------------------
 
 	df     = _get_fam(name);
 	nutkey = df[_NB_F_NUT_KEY];
+	nutheight = df[_NB_F_NUT_HEIGHT];
+	l = nutheight+clh;
 
 	translate([0,0,-l/2]) hexaprism(ri=nutkey/2+clk/2, h=l);
 }
