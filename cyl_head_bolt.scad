@@ -101,7 +101,7 @@ module nutcatch_parallel(
 	nutheight = df[_NB_F_NUT_HEIGHT];
 	l = nutheight+clh;
 
-	translate([0,0,-l/2]) hexaprism(ri=nutkey/2+clk/2, h=l);
+	translate([0,0,-l/2]) hexaprism(ri=nutkey/2+clk/2, h=l+e);
 }
 // -- end of nutcatch_parallel module
 // -----------------------------
