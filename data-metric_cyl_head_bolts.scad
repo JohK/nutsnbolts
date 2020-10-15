@@ -32,6 +32,10 @@
 
 data_screw_fam = [
 // desc, th_outerdia, th_innerdia, lead, key, key_depth, head_height, head_dia, nut_key, nut_height
+["M1",     1, 0.75, 0.25, "x", "x", "x", "x",  2.5,  0.8], // not listed in standard
+["M1.1", 1.1, 0.85, 0.25, "x", "x", "x", "x",  2.5,  0.9], // not listed in standard
+["M1.2", 1.2, 0.95, 0.25, "x", "x", "x", "x",  3.0,  1.0], // not listed in standard
+["M1.4", 1.4, "xx",  0.3, 1.3,  "x", 1.4, 2.6, 3.0,  1.2], // not listed in standard
 ["M1.6", 1.6, "xx", 0.35, 1.5,  0.7, 1.6,   3, 3.2,  1.3],
 ["M2",	   2, "xx",  0.4, 1.5,    1,   2, 3.8,   4,  1.6],
 ["M2.5", 2.5, "xx", 0.45,   2,  1.1, 2.5, 4.5,   5,    2],
