@@ -244,9 +244,11 @@ module key_slot(
 { // -----------------------------------------------
 
 	if (name!="none")
-		assign(df = _get_fam(name), 
-		       k = df[_NB_F_KEY],
-		       l = df[_NB_F_KEY_DEPTH]);
+	{
+		    df = _get_fam(name);
+		    k = df[_NB_F_KEY];
+		    l = df[_NB_F_KEY_DEPTH];
+	}
 	
 	translate([0,0,-(l+cll)/2]) hexaprism(ri=(k+clk)/2, h=(l+cll));
 }
